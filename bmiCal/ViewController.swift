@@ -56,7 +56,7 @@ class ViewController: UIViewController {
         sText.isHidden = true
         mText.isHidden = true
         lText.isHidden = true
-        lText.isHidden = true
+        lLtext.isHidden = true
         
         if height.text == "" || weight.text == ""{
             //沒有輸入數字時跳出的警告訊息
@@ -67,7 +67,9 @@ class ViewController: UIViewController {
         else{
             //算式 BMI = 體重(公斤) / 身高2(公尺2)
             let heightM = Double(height.text!)!/100
-            result.text = String(Double(weight.text!)!/(heightM * heightM))
+            result.text = String(format:"%.1f",Double(weight.text!)!/(heightM * heightM))
+            //format:"%.1f",用來控制讓數字只到小數後一位
+            
             if Double(result.text!)!<18.5{
                 sText.isHidden = false
                 sArrow.isHidden = false
@@ -85,6 +87,7 @@ class ViewController: UIViewController {
                 lLArrow.isHidden = false
             }
         }
+        
         height.resignFirstResponder()
         weight.resignFirstResponder()
     }
